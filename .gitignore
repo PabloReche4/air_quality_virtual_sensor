@@ -1,0 +1,8 @@
+# Data (downloaded automatically from UCI by the notebook)
+*.csv
+*.zip
+
+# Jupyter / Python leftovers
+.ipynb_checkpoints/
+__pycache__/
+.DS_Store
