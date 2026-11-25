@@ -36,13 +36,13 @@ Certified air-quality analyzers are accurate but expensive, so cities can only a
 
 ## My contribution
 
-Team of 3 (Pablo Reche, Ignacio Argüelles and me) for the *Data Analysis & Visualisation* course at Université Toulouse Capitole (Erasmus exchange, 2026).
+Team of 3 (José María Duro Agea, Ignacio Argüelles and me) for the Data Analysis & Visualisation course at Université Toulouse Capitole (Erasmus exchange, 2026).
 
-The first version of the pipeline was built as a team. I was the project's technical reviewer and led its second iteration, which turned a working coursework notebook into a methodologically sound analysis:
+I set up the project and later owned the final part of the presentation, making sure that what we showed matched what the analysis actually supported:
 
-- **Methodology audit:** found and fixed problems that inflated or invalidated results, such as model selection on the test set (moved to time-series cross-validation), missing baselines, mislabelled units, a gap-interpolation bug (pandas' `limit` silently filled long gaps) and claims the data did not support.
-- **SVR, end to end:** implemented and tuned the support vector regressor that became the final model, its model-agnostic SHAP explanation, and the comparison with XGBoost.
-- **New analyses:** residual diagnostics, outlier sensitivity, a recalibration simulation, a drop-one-feature test and an interactive monthly profile, each answering a question the first version left open.
+Project setup and first pipeline: scoped the dataset and the research questions, and built the first end-to-end Colab notebook (loading, cleaning, EDA, regression models and SHAP) that the team iterated on. While building it, I found that the published benzene values are almost a perfect function of one sensor (R² ≈ 1.00), which led us to predict CO instead. I also added the leakage test showing that a calendar "month" feature looks useful under a random split but hurts on genuinely future data.
+Presentation, part 3 (model diagnostics, explainable AI, deployment insights, conclusion): redesigned these slides following the course's visualisation principles: one message per chart, direct labels, grey plus a single accent colour, zero baselines, and no lines drawn across missing data. I replaced a permutation-importance chart that was labelled as SHAP with the real summary, beeswarm and waterfall plots, split global and local explanations, and turned dense tables into sorted bar and dot charts.
+Fact-checking the report: checked every figure on the slides against the notebook outputs and reproduced the final model's metrics independently. This corrected mismatched numbers (leakage scores, the share of outliers at rush hour), a mislabelled data gap (the sensor device, not the reference analyzer, was offline) and overstated claims ("synthetic" benzene, temperature "correcting drift", recalibration "solving" seasonal error). I also wrote the speaker script for my section.
 
 ## How to run
 
